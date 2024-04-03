@@ -1,4 +1,4 @@
-##日本語バージョンは[こちらへ](./react-loan-calculator/README_jp.md)
+# 日本語での説明は[こちらへ](./react-loan-calculator/README_jp.md)
 
 # React Loan Calculator and Form Submission
 Example of a multi-step react component that leverages getting and posting Liferay Object data. This component also contains translated content for French, Portuguese, Spanish, and English based on the user's Liferay language settings.
