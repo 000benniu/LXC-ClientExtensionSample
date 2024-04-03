@@ -1,15 +1,9 @@
 # React Loan Calculator and Form Submission
-
-[![Deploy to
-Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/weskempa-liferay/react-loan-calculator)
-
 Example of a multi-step react component that leverages getting and posting Liferay Object data. This component also contains translated content for French, Portuguese, Spanish, and English based on the user's Liferay language settings.
 
 ![Component Outcomes 1](./screenshots/img-1.png)
-
-*Language file corrections, suggestions, or additional locales are welcome!*
-
 ![Component Outcomes 2](./screenshots/img-2.png)
+![Component Outcomes 3](./screenshots/img-3.png)
 
 ### Expected Use
 This resource can be used as a 7.4 Remote App (Custom Element) or a Client Extension service for LXC.
@@ -65,20 +59,45 @@ This resource can be used as a 7.4 Remote App (Custom Element) or a Client Exten
 8. Publish the new Loan Request Object
 
 
-## Clone Repo and Install Packages
-Clone repo and once ready run the following:
+## Build / Deploy on LXC-SM use Jenkins
+1. Upload LXC-SM project (Keep the foloder stucture) and jenkins will automaticly build.
+1. After the project is buit, deploy it to UAT/DEV/PRD slot.
+1. After the deploy is succeed, you can find this remote app on [Applications] -> [CUSTOM APPS] -> [Client Extensions]
+![Component Outcomes 4](./screenshots/img-4.png)
 
+*This will let the Javascript Resources Hosted on Liferay Server in webapps
+
+# Other deploy Method Options
+
+## Build React app on Local machine
+Clone repo and run the following:
+
+```
+cd liferay/client-extensions/react-loan-calculator
 yarn install
+npm run build
+```
 
-# Display Method Options
+* After the build is done, you can find two files:
+```
+build/static/js/main.4dc1c35e.js
+build/static/css/main.dc4d6ff2.css
+```
 
-So many ways to use Remote Apps!! *Yey!*
+## Deploy and use
 
-  * Delivery Method A - Remote App's Custom Element
-  
-     * [Option 1] Javascript Resources Hosted on Remote Server or LXC Client Extension Service
-     * [Option 2] Javascript Resources Hosted on Liferay Server in webapps
-     * [Option 3] Javascript Resources Added to Document Library
+### [Option 1] Hoste this Javascript Resources on Remote Server or LXC Client Extension Service
+
+1. Use `lcp deploy` to build.
+2. After the `/dist/react-loan-calculator.zip` is created, use `lcp deploy` to deploy to the LXC-Client Extension slot.
+
+e.g.
+```
+lcp deploy --project extxxxxxxx-extuat --ext ./dist/yyyyy.zip
+```
+
+### [Option 2] Add Javascript Resources to Document Library
+
 
 ## Setup Instruction
 
@@ -91,7 +110,7 @@ Include these in your Remote App or LXC Client Extension Service definition.
 | cssURLs             | path to main.css |
      
      
-  * Delivery Method B - Use as separate React App (Make sure to set the CORs Policy to support this approach if on a separate domain) 
-  * Delivery Method C - Remote App's iFrame (Make sure to set the CORs Policy to support this approach if on a separate domain)
+* Delivery Method A - Use as separate React App (Make sure to set the CORs Policy to support this approach if on a separate domain) 
+* Delivery Method B - Remote App's iFrame (Make sure to set the CORs Policy to support this approach if on a separate domain)
 
-![Component Outcomes 3](./screenshots/img-3.png)
+
